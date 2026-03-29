@@ -1,23 +1,79 @@
-# 💳 Fraud Detection Using Machine Learning
- 
-Predicting fraudulent financial transactions using historical transaction data. Based on a Kaggle fraud detection dataset.
- 
-> **Goal**: Identify fraudulent transactions while minimizing false negatives using appropriate classification metrics.
- 
----
+# Fraud Detection Using Machine Learning
 
-## 📊 Dataset
- 
-The dataset comes from Kaggle and contains financial transactions with features such as transaction type, amount, balances, and fraud labels.
+This project predicts whether a financial transaction is fraudulent using a machine learning model trained on historical transaction data from Kaggle.
 
-## 🎯 Problem
+The repository includes:
 
-> Fraud detection is a binary classification problem with highly imbalanced data, where fraudulent transactions represent a very small percentage of the dataset.
- 
----
+- a trained model file: `fraud_detection_model.pkl`
+- a Streamlit app for interactive predictions: `main.py`
+- a notebook for analysis and experimentation: `analysis_model.ipynb`
 
-## 📚 References
- 
+## Overview
+
+Fraud detection is a binary classification problem with highly imbalanced data, where fraudulent transactions make up a small portion of all transactions.
+
+The goal of this project is to identify fraudulent transactions while keeping false negatives low, since missed fraud cases can be especially costly.
+
+## Dataset
+
+The dataset is based on a Kaggle fraud detection dataset containing transaction records and fraud labels.
+
+Main feature types include:
+
+- transaction type
+- transaction amount
+- sender balances before and after the transaction
+- destination balances before and after the transaction
+
+Dataset source:
+
 - [Kaggle Dataset](https://www.kaggle.com/datasets/amanalisiddiqui/fraud-detection-dataset)
- 
----
+
+## App Inputs
+
+The prediction app expects the following transaction fields:
+
+- `type`
+- `amount`
+- `oldbalanceOrg`
+- `newbalanceOrig`
+- `oldbalanceDest`
+- `newbalanceDest`
+
+The app returns:
+
+- `1` for fraudulent
+- `0` for legitimate
+
+## Project Structure
+
+- `main.py` - Streamlit app for fraud prediction
+- `fraud_detection_model.pkl` - serialized trained model
+- `analysis_model.ipynb` - notebook for analysis and model development
+- `pyproject.toml` - project metadata and dependencies
+
+## Setup
+
+This project requires Python `3.13+`.
+
+Install dependencies with `uv`:
+
+```bash
+uv sync
+```
+
+Or install them manually with `pip`:
+
+```bash
+pip install matplotlib numpy pandas scikit-learn seaborn streamlit joblib
+```
+
+## Run the App
+
+Start the Streamlit app with:
+
+```bash
+streamlit run main.py
+```
+
+Then open the local URL shown in your terminal.
